@@ -1,5 +1,5 @@
 #!/bin/bash -x
-printf "Added feature to convert dictionary values to store in array\n"
+printf "Added feature to sort array in descending order\n"
 declare -A resultDictionary
 #READING INPUTS FROM USER
 printf "Enter three inputs: \n"
@@ -19,5 +19,20 @@ resultDictionary[4]="$result4"
 for value in ${!resultDictionary[@]}
 do
 	resultArray[$value]="${resultDictionary[$value]}"
+done
+echo "${resultArray[@]}"
+
+#SORTING ARRAY IN DESCENDING ORDER
+for value1 in ${!resultArray[@]}
+do
+	for value2 in ${!resultArray[@]}
+	do
+		if((`echo "${resultArray[$value1]}>${resultArray[$value2]}" | bc -q`==1))
+		then
+			temp="${resultArray[$value1]}"
+			resultArray[$value1]="${resultArray[$value2]}"
+			resultArray[$value2]=$temp
+		fi
+	done
 done
 echo "${resultArray[@]}"
