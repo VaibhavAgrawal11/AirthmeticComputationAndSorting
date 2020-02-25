@@ -1,2 +1,5 @@
 #!/bin/bash -x
-printf "Welcome to problem of airthmetic computation and sorting\n"
+printf "Enter three inputs: \n"
+read number1
+read number2
+read number3
